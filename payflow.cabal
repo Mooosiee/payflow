@@ -54,4 +54,11 @@ test-suite payflow-test
   import: common-options
   hs-source-dirs: test
   main-is: Spec.hs
-  build-depends: payflow, hspec, QuickCheck, aeson, text, containers
+  build-depends:
+      base >=4.16 && <5
+    , payflow
+    , hspec
+    , QuickCheck
+    , aeson
+    , text
+    , containers
