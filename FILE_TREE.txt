@@ -1,0 +1,27 @@
+payflow/
+├── README.md
+├── payflow.cabal
+├── cabal.project
+├── Makefile
+├── .env.example
+├── docker-compose.yml
+├── src/PayFlow/
+│   ├── Domain.hs
+│   ├── Validation.hs
+│   ├── Routing.hs
+│   ├── Provider.hs
+│   ├── Engine.hs
+│   ├── Idempotency.hs
+│   ├── Persistence.hs
+│   └── API.hs
+├── app/Main.hs
+├── test/Spec.hs
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── API.md
+│   ├── IMPLEMENTATION_PLAN.md
+│   ├── DECISIONS.md
+│   ├── BUILD_LOG.md
+│   ├── INTERVIEW_GUIDE.md
+│   └── LLM_BUILD_PROMPT.md
+└── .github/workflows/ci.yml

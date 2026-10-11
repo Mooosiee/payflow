@@ -1,0 +1,57 @@
+cabal-version: 3.0
+name: payflow
+version: 0.1.0.0
+synopsis: Functional payment routing and reliability simulator
+license: MIT
+build-type: Simple
+
+common common-options
+  default-language: GHC2021
+  ghc-options: -Wall -Wcompat -Wincomplete-uni-patterns -Wincomplete-record-updates
+  build-depends:
+      base >=4.16 && <5
+    , aeson
+    , bytestring
+    , containers
+    , text
+    , time
+    , uuid
+    , mtl
+    , transformers
+
+library
+  import: common-options
+  hs-source-dirs: src
+  exposed-modules:
+      PayFlow.Domain
+      PayFlow.Validation
+      PayFlow.Routing
+      PayFlow.Provider
+      PayFlow.Engine
+      PayFlow.Idempotency
+      PayFlow.Persistence
+      PayFlow.API
+  build-depends:
+      servant
+    , servant-server
+    , warp
+    , wai
+    , postgresql-simple
+    , resource-pool
+    , monad-logger
+    , fast-logger
+    , http-types
+    , exceptions
+
+executable payflow-server
+  import: common-options
+  hs-source-dirs: app
+  main-is: Main.hs
+  build-depends: payflow, warp, servant-server
+
+test-suite payflow-test
+  type: exitcode-stdio-1.0
+  import: common-options
+  hs-source-dirs: test
+  main-is: Spec.hs
+  build-depends: payflow, hspec, QuickCheck, aeson, text, containers
